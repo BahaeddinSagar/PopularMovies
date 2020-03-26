@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="sort_by_popularity">sort by popularity</string>
+    <string name="net_err">Network Failure</string>
+    <string name="err_fetch">Error fetching data</string>
+    <string name="sort_by_highestRated">Sort by highest rated</string>
+    <string name="cover_image">Cover image</string>
+    <string name="released_in">Released in: &#160;</string>
+    <string name="overview">Overview: \n</string>
+</resources>
