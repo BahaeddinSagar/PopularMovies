@@ -7,4 +7,10 @@
     <string name="cover_image">Cover image</string>
     <string name="released_in">Released in: &#160;</string>
     <string name="overview">Overview: \n</string>
+    <string name="play_image">Play image</string>
+    <string name="trailers">Trailers:</string>
+    <string name="reviews">Reviews</string>
+    <string name="there_are_no_reviews_for_this_movie">There are no reviews for this movie</string>
+    <string name="page">page</string>
+    <string name="go">GO</string>
 </resources>

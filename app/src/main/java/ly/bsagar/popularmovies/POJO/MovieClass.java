@@ -1,4 +1,4 @@
-package ly.bsagar.popularmovies.Utils;
+package ly.bsagar.popularmovies.POJO;
 
 import org.parceler.Parcel;
 
@@ -10,12 +10,14 @@ public class MovieClass {
     String imagePath;
     String backDrop;
     String vote_average;
+    String movieID;
 
 
-    public MovieClass() {
+    MovieClass() {
     }
 
-    public MovieClass(String title, String overview, String releaseDate, String imagePath, String backDrop, String vote_average) {
+    public MovieClass(String movieID, String title, String overview, String releaseDate, String imagePath, String backDrop, String vote_average) {
+        this.movieID = movieID;
         this.title = title;
         this.overview = overview;
         this.releaseDate = releaseDate;
@@ -43,6 +45,8 @@ public class MovieClass {
     public String getImagePath() {
         return imagePath;
     }
+
+    public String getMovieID(){return movieID; }
 
     public String getBackDrop() {
         return backDrop;

@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".DetailActivity">
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:src="@android:drawable/btn_star"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|right|end" />
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -25,6 +32,7 @@
             <ImageView
                 android:contentDescription="@string/cover_image"
                 android:id="@+id/expandedImage"
+
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
@@ -36,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin" />
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -56,24 +65,38 @@
 
             <TextView
                 android:id="@+id/releaseYear"
+                style="@style/DetailTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/released_in"
-                style="@style/DetailTextStyle"
-                />
+                android:text="@string/released_in" />
 
             <TextView
                 android:id="@+id/voteAvr"
+                style="@style/DetailTextStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/DetailTextStyle"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/overview"
-                android:text="@string/overview"
+                style="@style/DetailTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/DetailTextStyle"/>
+                android:text="@string/overview" />
+            <TextView
+                style="@style/DetailTextStyle"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trailers" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/trailers"
+                />
+
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

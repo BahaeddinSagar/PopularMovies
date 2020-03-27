@@ -22,14 +22,13 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.parceler.Parcel;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import ly.bsagar.popularmovies.Utils.JsonUtili;
-import ly.bsagar.popularmovies.Utils.MovieClass;
-import ly.bsagar.popularmovies.Utils.MoviesAdapter;
+import ly.bsagar.popularmovies.POJO.JsonUtili;
+import ly.bsagar.popularmovies.POJO.MovieClass;
+import ly.bsagar.popularmovies.Adapters.MoviesAdapter;
 import ly.bsagar.popularmovies.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.MovieAdapterClickHandler {
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     private static final String TAG = "MainActivity";
     private final String POPULAR_URL="https://api.themoviedb.org/3/movie/popular";
     private final String TOPRATED_URL="https://api.themoviedb.org/3/movie/top_rated";
+    private static final String API_KEY = BuildConfig.API_KEY;
     ArrayList<MovieClass> movies = new ArrayList<>();
     int page = 1;
     MoviesAdapter moviesAdapter;
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         } else {
             uriBuilder = Uri.parse(TOPRATED_URL).buildUpon();
         }
-        uriBuilder.appendQueryParameter("api_key", getString(R.string.API_KEY));
+        uriBuilder.appendQueryParameter("api_key", API_KEY);
         uriBuilder.appendQueryParameter("page", String.valueOf(page));
         String URL = uriBuilder.build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     private void populateUI(JSONObject response) {
 
         try {
-            movies = JsonUtili.parseJson(response.getJSONArray("results"));
+            movies = JsonUtili.parseJsonMovie(response.getJSONArray("results"));
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(this, R.string.err_fetch, Toast.LENGTH_SHORT).show();
@@ -99,14 +99,13 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         }
 
         moviesAdapter =new MoviesAdapter(this);
-
         moviesAdapter.setContent(movies);
         binding.recylerView.setLayoutManager(new GridLayoutManager(this,2));
         binding.recylerView.setAdapter(moviesAdapter);
 
 
     }
-
+    // recycle view on click listener
     @Override
     public void onClick(int position) {
         Intent intent = new Intent(this, DetailActivity.class);

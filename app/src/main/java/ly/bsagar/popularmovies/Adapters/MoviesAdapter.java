@@ -1,4 +1,4 @@
-package ly.bsagar.popularmovies.Utils;
+package ly.bsagar.popularmovies.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import ly.bsagar.popularmovies.POJO.MovieClass;
 import ly.bsagar.popularmovies.R;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdapterViewHolder> {
@@ -33,7 +34,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdap
     public MoviesAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_layout, parent, false);
+        View view = layoutInflater.inflate(R.layout.movie_item_layout, parent, false);
         return new MoviesAdapterViewHolder(view);
     }
 
