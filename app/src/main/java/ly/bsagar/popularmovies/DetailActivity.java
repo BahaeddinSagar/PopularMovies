@@ -10,6 +10,12 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import org.parceler.Parcel;
+import org.parceler.Parcels;
+
+import java.text.MessageFormat;
+
+import ly.bsagar.popularmovies.Utils.MovieClass;
 import ly.bsagar.popularmovies.databinding.ActivityDetailBinding;
 
 public class DetailActivity extends AppCompatActivity {
@@ -22,23 +28,18 @@ public class DetailActivity extends AppCompatActivity {
         setTheme(R.style.AppThemeNoActionBar);
 
         Intent intent = getIntent();
-        String title =intent.getStringExtra("title");
-        String overview = intent.getStringExtra("overview");
-        String rating = intent.getStringExtra("rating");
-        String release = intent.getStringExtra("release");
-        String image = intent.getStringExtra("image");
+        MovieClass movie = Parcels.unwrap(intent.getParcelableExtra("movie"));
 
+        binding.overview.append(movie.getOverview());
+        binding.voteAvr.setText(MessageFormat.format("{0}/10", movie.getVote_average()));
+        binding.releaseYear.append(movie.getReleaseDate());
 
-        binding.overview.append(overview);
-        binding.voteAvr.setText(rating+"/10");
-        binding.releaseYear.append(release);
-
-        Picasso.get().load(image)
+        Picasso.get().load(movie.getBackDrop())
                 .into(binding.expandedImage);
 
         //still don't fully understand this part for collabsable toolbar, will have to revisit in the future
         setSupportActionBar(binding.toolbar);
-        setTitle(title);
+        setTitle(movie.getTitle());
         binding.appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;

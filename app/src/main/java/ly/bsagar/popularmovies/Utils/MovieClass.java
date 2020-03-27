@@ -1,13 +1,19 @@
 package ly.bsagar.popularmovies.Utils;
 
-public class MovieClass {
-    private String title;
-    private String overview;
-    private String releaseDate;
-    private String imagePath;
-    private String backDrop;
-    private String vote_average;
+import org.parceler.Parcel;
 
+@Parcel
+public class MovieClass {
+    String title;
+    String overview;
+    String releaseDate;
+    String imagePath;
+    String backDrop;
+    String vote_average;
+
+
+    public MovieClass() {
+    }
 
     public MovieClass(String title, String overview, String releaseDate, String imagePath, String backDrop, String vote_average) {
         this.title = title;

@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -108,11 +110,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     @Override
     public void onClick(int position) {
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("title", movies.get(position).getTitle());
-        intent.putExtra("overview", movies.get(position).getOverview());
-        intent.putExtra("image", movies.get(position).getBackDrop());
-        intent.putExtra("rating", movies.get(position).getVote_average());
-        intent.putExtra("release", movies.get(position).getReleaseDate());
+        intent.putExtra("movie", Parcels.wrap(movies.get(position)));
         startActivity(intent);
     }
 
